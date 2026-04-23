@@ -1,132 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>배민UI개선안 1차 </title>
-</head>
-<body>
-  <div>SOYEON</div>
-</body>
-<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>마이배민 — 배민클럽 온보딩 개선안</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배민클럽 온보딩 개선안</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --baemin-teal: #2AC1BC;
-    --baemin-dark: #1A1A1A;
-    --baemin-gray-1: #F5F5F5;
-    --baemin-gray-2: #EBEBEB;
-    --baemin-gray-3: #999999;
-    --baemin-gray-4: #666666;
-    --baemin-red: #FF3B30;
-    --baemin-pink: #FF6B6B;
-    --baemin-club-blue: #3B5BDB;
-    --white: #FFFFFF;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
 
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: #E8E8E8;
+    background: #D9D9D9;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
-    padding: 40px 20px;
+    padding: 48px 20px;
     gap: 32px;
     flex-wrap: wrap;
   }
 
-  /* ===== PHONE FRAME ===== */
-  .phone-wrapper {
+  /* ── 폰 프레임 ── */
+  .phone-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
-  .phone-label {
-    font-size: 13px;
+  .phone-tag {
+    font-size: 12px;
     font-weight: 700;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background: white;
-    padding: 6px 14px;
+    color: #444;
+    background: #fff;
     border-radius: 20px;
+    padding: 5px 16px;
+    letter-spacing: 0.3px;
   }
 
   .phone {
     width: 375px;
-    height: 780px;
-    background: white;
-    border-radius: 40px;
+    height: 812px;
+    background: #F5F5F5;
+    border-radius: 44px;
     overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.08);
-    position: relative;
+    box-shadow:
+      0 0 0 10px #1A1A1A,
+      0 0 0 11px #333,
+      0 28px 72px rgba(0,0,0,0.35);
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
-  .phone-status {
-    height: 44px;
-    background: white;
+  /* 상태바 */
+  .status-bar {
+    height: 50px;
+    background: #fff;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
-    flex-shrink: 0;
+    padding: 0 28px 0 24px;
   }
+  .status-bar .time { font-size: 15px; font-weight: 700; color: #111; }
+  .status-bar .icons { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #111; }
 
-  .status-time { font-size: 15px; font-weight: 700; color: #1A1A1A; }
-  .status-icons { font-size: 13px; color: #1A1A1A; }
-
-  /* ===== MY BAEMIN SCREEN ===== */
+  /* 스크롤 영역 */
   .screen {
     flex: 1;
     overflow-y: auto;
-    background: #F5F5F5;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    background: #F5F5F5;
   }
   .screen::-webkit-scrollbar { display: none; }
 
-  /* Header */
-  .my-header {
-    background: white;
-    padding: 16px 20px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .my-header h1 { font-size: 20px; font-weight: 700; color: #1A1A1A; }
-  .header-icons { display: flex; gap: 16px; }
-  .header-icon { width: 28px; height: 28px; opacity: 0.7; }
-
-  /* Survey bar */
-  .survey-bar {
-    background: white;
-    margin: 0;
-    padding: 12px 20px;
+  /* ── 헤더 ── */
+  .top-bar {
+    background: #fff;
+    padding: 14px 20px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #F0F0F0;
-    font-size: 14px;
-    color: #666;
   }
-  .survey-bar span { display: flex; align-items: center; gap: 8px; }
+  .top-bar h1 { font-size: 20px; font-weight: 700; color: #111; }
+  .top-bar .icons { display: flex; gap: 16px; font-size: 22px; }
 
-  /* Profile */
-  .profile-section {
-    background: white;
+  /* 서베이 바 */
+  .survey {
+    background: #fff;
+    padding: 11px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #777;
+    border-bottom: 8px solid #F5F5F5;
+  }
+
+  /* 프로필 */
+  .profile {
+    background: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -134,712 +110,498 @@
     gap: 8px;
     border-bottom: 8px solid #F5F5F5;
   }
-
-  .profile-avatar {
-    width: 72px; height: 72px;
+  .avatar {
+    width: 68px; height: 68px;
+    background: #FFE8E8;
     border-radius: 50%;
-    background: #FFE4E4;
     display: flex; align-items: center; justify-content: center;
     font-size: 32px;
-    position: relative;
   }
-
   .profile-name {
+    font-size: 16px; font-weight: 700; color: #111;
     display: flex; align-items: center; gap: 8px;
-    font-size: 16px; font-weight: 700; color: #1A1A1A;
+  }
+  .btn-edit {
+    font-size: 12px; color: #777;
+    background: #F5F5F5; border: none;
+    border-radius: 10px; padding: 4px 10px;
+    font-family: inherit; cursor: pointer;
   }
 
-  .edit-btn {
-    background: #F5F5F5;
-    border: none;
-    border-radius: 12px;
-    padding: 4px 10px;
-    font-size: 12px;
-    color: #666;
-    cursor: pointer;
-  }
-
-  /* ===== 개선안: 배민클럽 상단 고정 카드 ===== */
-  .club-fixed-card {
-    background: white;
-    margin: 8px 0 0;
-    padding: 16px 20px;
+  /* ── 토글 카드 공통 ── */
+  .toggle-card {
+    background: #fff;
+    margin-top: 8px;
     border-bottom: 8px solid #F5F5F5;
-  }
-
-  /* 미가입자용 — 개인화 절감 카드 */
-  .club-cta-card {
-    background: linear-gradient(135deg, #EEF2FF 0%, #E8F4FD 100%);
-    border-radius: 16px;
-    padding: 16px;
-    border: 1.5px solid #C5D3F5;
-    position: relative;
     overflow: hidden;
   }
 
-  .club-cta-card::before {
-    content: '';
-    position: absolute;
-    top: -20px; right: -20px;
-    width: 80px; height: 80px;
-    background: rgba(42, 193, 188, 0.08);
-    border-radius: 50%;
-  }
-
-  .club-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: #3B5BDB;
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-  }
-
-  .club-savings-headline {
-    font-size: 15px;
-    font-weight: 700;
-    color: #1A1A1A;
-    margin-bottom: 12px;
-    line-height: 1.4;
-  }
-  .club-savings-headline .highlight {
-    color: #3B5BDB;
-  }
-
-  /* 절감 시각화 */
-  .savings-visual {
-    background: white;
-    border-radius: 12px;
-    padding: 12px 14px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .savings-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    flex: 1;
-  }
-
-  .savings-col-label {
-    font-size: 11px;
-    color: #999;
-    font-weight: 500;
-  }
-
-  .savings-col-amount {
-    font-size: 17px;
-    font-weight: 900;
-    color: #1A1A1A;
-  }
-
-  .savings-col-amount.red { color: #FF3B30; }
-  .savings-col-amount.blue { color: #3B5BDB; }
-
-  .savings-divider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    color: #CCC;
-  }
-
-  .savings-arrow {
-    font-size: 18px;
-    color: #2AC1BC;
-  }
-
-  .savings-saved {
-    background: #EBF8F7;
-    border-radius: 8px;
-    padding: 6px 10px;
-    font-size: 12px;
-    color: #2AC1BC;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 12px;
-  }
-
-  /* CTA 버튼들 */
-  .club-cta-buttons {
-    display: flex;
-    gap: 8px;
-  }
-
-  .btn-join-now {
-    flex: 1;
-    background: #3B5BDB;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 11px 0;
-    font-size: 14px;
-    font-weight: 700;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-  }
-
-  .btn-later {
-    background: white;
-    color: #666;
-    border: 1.5px solid #E0E0E0;
-    border-radius: 10px;
-    padding: 11px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  /* 나중에 보기 안내 */
-  .club-reminder-hint {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 10px;
-    padding: 0 2px;
-  }
-
-  .reminder-dot {
-    width: 6px; height: 6px;
-    background: #2AC1BC;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .reminder-text {
-    font-size: 11px;
-    color: #999;
-    line-height: 1.4;
-  }
-
-  /* ===== TOGGLE ===== */
   .toggle-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 13px 16px;
-    background: #F0FBF9;
-    border-radius: 14px;
+    padding: 15px 20px;
     cursor: pointer;
-    border: 1.5px solid #2AC1BC;
-    transition: border-radius 0.25s;
-  }
-
-  .toggle-header.open {
-    border-radius: 14px 14px 0 0;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .toggle-title {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    gap: 7px;
+    font-size: 15px;
     font-weight: 700;
-    color: #1A1A1A;
+    color: #111;
   }
-
-  .toggle-star { font-size: 15px; }
 
   .toggle-arrow {
-    font-size: 11px;
-    color: #2AC1BC;
-    font-weight: 700;
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    color: #BBBBBB;
+    font-size: 13px;
     transition: transform 0.25s ease;
-    display: inline-block;
   }
+  .toggle-arrow.up { transform: rotate(0deg); }
+  .toggle-arrow.down { transform: rotate(180deg); }
 
-  .toggle-arrow.closed { transform: rotate(180deg); }
-
-  #toggleBody {
+  /* 토글 바디 */
+  .toggle-body {
     overflow: hidden;
-    max-height: 500px;
     transition: max-height 0.3s ease, opacity 0.25s ease;
-    opacity: 1;
-    border-radius: 0 0 14px 14px !important;
-    border: 1.5px solid #2AC1BC;
-    border-top: none;
+  }
+  .toggle-body.open { max-height: 600px; opacity: 1; }
+  .toggle-body.closed { max-height: 0; opacity: 0; }
+
+  .toggle-inner {
+    padding: 0 16px 16px;
   }
 
-  #toggleBody.collapsed {
-    max-height: 0;
-    opacity: 0;
+  /* 닫힌 상태 요약 한 줄 */
+  .collapsed-hint {
+    padding: 0 20px 13px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2AC1BC;
+  }
+
+  /* ── 혜택 카드 내부 ── */
+  .benefit-card {
+    background: linear-gradient(140deg, #EEF2FF 0%, #E6F5FD 100%);
+    border-radius: 16px;
+    border: 1.5px solid #C8D5F5;
+    padding: 18px 16px 16px;
+  }
+
+  .benefit-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #3D5CDB;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+
+  .benefit-headline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .benefit-headline .blue { color: #3D5CDB; }
+
+  /* 절감 시각화 */
+  .saving-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .saving-col {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 3px; flex: 1;
+  }
+  .saving-label { font-size: 11px; color: #999; }
+  .saving-amount { font-size: 19px; font-weight: 900; }
+  .saving-amount.red { color: #FF3B30; }
+  .saving-amount.blue { color: #3D5CDB; }
+  .saving-arrow { font-size: 20px; color: #2AC1BC; }
+
+  .saving-result {
+    background: #EBF8F7;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #18A09A;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* 버튼 영역 */
+  .btn-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .btn-join {
+    flex: 1;
+    background: #2AC1BC;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
     border: none;
+    border-radius: 10px;
+    padding: 13px 0;
+    cursor: pointer;
+    letter-spacing: -0.2px;
   }
 
-  /* ===== 기존 카드들 ===== */
+  .btn-later {
+    background: #fff;
+    color: #777;
+    border: 1.5px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .reminder-note {
+    display: flex; align-items: flex-start; gap: 5px;
+  }
+  .reminder-note::before {
+    content: '•';
+    color: #2AC1BC;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  .reminder-note span {
+    font-size: 11px;
+    color: #AAAAAA;
+    line-height: 1.5;
+  }
+
+  /* ── 일반 정보 카드 ── */
   .info-card {
-    background: white;
+    background: #fff;
     margin-top: 8px;
     padding: 0 20px;
   }
-
   .info-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 15px 0;
     border-bottom: 1px solid #F5F5F5;
     font-size: 15px;
-    color: #1A1A1A;
     font-weight: 500;
+    color: #111;
   }
-
   .info-row:last-child { border-bottom: none; }
+  .info-right { font-size: 14px; color: #777; }
 
-  .info-row-right {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #666;
-    font-size: 14px;
+  .coupon-row {
+    display: flex; gap: 8px;
+    overflow-x: auto; padding: 8px 0 12px;
+    -ms-overflow-style: none; scrollbar-width: none;
   }
-
-  /* Coupon chips */
-  .coupon-scroll {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 12px 0 4px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  .coupon-row::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0; font-size: 12px; font-weight: 700;
+    border-radius: 20px; padding: 7px 13px; white-space: nowrap;
   }
-  .coupon-scroll::-webkit-scrollbar { display: none; }
+  .chip-red { background: #FFF0F0; color: #FF3B30; border: 1px solid #FFD5D5; }
+  .chip-blue { background: #EEF2FF; color: #3D5CDB; border: 1px solid #C8D5F5; }
 
-  .coupon-chip {
-    flex-shrink: 0;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .coupon-chip.pink {
-    background: #FFF0F0;
-    color: #FF3B30;
-    border: 1px solid #FFD6D6;
-  }
-
-  .coupon-chip.club {
-    background: #EEF2FF;
-    color: #3B5BDB;
-    border: 1px solid #C5D3F5;
-    display: flex; align-items: center; gap: 4px;
-  }
-
-  /* Bottom nav */
-  .bottom-nav {
-    background: white;
-    border-top: 1px solid #F0F0F0;
+  /* ── 하단 탭바 ── */
+  .tab-bar {
+    background: #fff;
+    border-top: 1px solid #EFEFEF;
     display: flex;
     flex-shrink: 0;
   }
-
-  .nav-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    padding: 10px 0 12px;
-    font-size: 10px;
-    color: #999;
-    cursor: pointer;
+  .tab {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 3px; padding: 10px 0 14px;
+    font-size: 10px; color: #BBBBBB; cursor: pointer;
   }
-
-  .nav-item.active { color: #2AC1BC; }
-
-  .nav-icon {
-    width: 24px; height: 24px;
-    background: #E0E0E0;
-    border-radius: 6px;
-  }
-
-  .nav-item.active .nav-icon { background: #2AC1BC; }
-
-  /* ===== SCREEN 2: 나중에 보기 클릭 후 ===== */
-  .reminder-banner {
-    background: #F0FBF9;
-    border: 1.5px solid #2AC1BC;
-    border-radius: 12px;
-    padding: 12px 14px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .reminder-banner-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .reminder-banner-text {
-    flex: 1;
-  }
-
-  .reminder-banner-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #1A1A1A;
-    margin-bottom: 2px;
-  }
-
-  .reminder-banner-sub {
-    font-size: 11px;
-    color: #666;
-  }
-
-  .reminder-banner-btn {
-    background: #2AC1BC;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 6px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  /* Section title */
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #999;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  /* Annotation arrows */
-  .annotation {
-    background: white;
-    border-radius: 12px;
-    padding: 10px 14px;
-    font-size: 12px;
-    color: #3B5BDB;
-    font-weight: 600;
-    border: 1.5px dashed #3B5BDB;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .annotation-dot {
-    width: 6px; height: 6px;
-    background: #3B5BDB;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .tab .icon { font-size: 22px; }
+  .tab.active { color: #2AC1BC; }
 </style>
 </head>
 <body>
 
-<!-- ===== PHONE 1: 현재 상태 (미가입자 마이배민) ===== -->
-<div class="phone-wrapper">
-  <div class="phone-label">❌ 현재 — 미가입자</div>
+<!-- ══════════════════════════════
+     PHONE 1 — 토글 열린 상태
+══════════════════════════════ -->
+<div class="phone-wrap">
+  <div class="phone-tag">✅ 토글 열린 상태</div>
   <div class="phone">
-    <div class="phone-status">
-      <span class="status-time">9:41</span>
-      <span class="status-icons">●●● 🔋</span>
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <span class="icons">▲▲▲ 🔋</span>
     </div>
+
     <div class="screen">
-      <div class="my-header">
+      <!-- 헤더 -->
+      <div class="top-bar">
         <h1>마이배민</h1>
-        <div class="header-icons">
-          <span style="font-size:20px">🎧</span>
-          <span style="font-size:20px">⚙️</span>
-        </div>
+        <div class="icons">🎧 ⚙️</div>
       </div>
 
-      <div class="survey-bar">
+      <!-- 서베이 -->
+      <div class="survey">
         <span>❓ 장보기·쇼핑 이용 경험, 어떠셨나요?</span>
         <span>›</span>
       </div>
 
-      <div class="profile-section">
-        <div class="profile-avatar">🐶</div>
+      <!-- 프로필 -->
+      <div class="profile">
+        <div class="avatar">🐶</div>
         <div class="profile-name">
           KKook
-          <button class="edit-btn">꾸미기</button>
+          <button class="btn-edit">꾸미기</button>
         </div>
       </div>
 
-      <!-- 현재: 배민클럽 없음 — 빈 공간만 -->
-      <div class="info-card" style="padding: 16px 20px;">
-        <div class="section-label">혜택</div>
-        <div style="background:#F5F5F5; border-radius:12px; padding:16px; text-align:center; color:#CCC; font-size:13px;">
-          배민클럽 배너 없음<br/>
-          <span style="font-size:11px">미가입자는 혜택 인지 어려움</span>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-row">
-          <span>쿠폰함</span>
-          <div class="info-row-right">4개 <span>›</span></div>
-        </div>
-        <div class="coupon-scroll">
-          <div class="coupon-chip pink">6,000원 오픈런 전 상품 6천원 쿠폰</div>
-          <div class="coupon-chip club">🐾 13,000원 배민클럽 열정...</div>
-        </div>
-        <div class="info-row">
-          <span>포인트</span>
-          <div class="info-row-right">0원 <span>›</span></div>
-        </div>
-        <div class="info-row">
-          <span>선물함</span>
-          <div class="info-row-right">0원 <span>›</span></div>
-        </div>
-        <div class="info-row" style="border-bottom:none">
-          <div>
-            <div>배민페이</div>
-            <div style="font-size:12px;color:#999;margin-top:2px">머니로 결제하면 배민포인트 적립</div>
-          </div>
-          <div class="info-row-right">결제수단 관리 <span>›</span></div>
-        </div>
-      </div>
-
-      <div class="info-card" style="margin-top:8px; padding:16px 20px;">
-        <div class="info-row" style="border:none;padding:0">
-          <span style="font-size:15px;font-weight:700">찜한 가게·상품</span>
-          <span>›</span>
-        </div>
-      </div>
-
-      <div style="height:80px"></div>
-    </div>
-
-    <div class="bottom-nav">
-      <div class="nav-item">🏠<span>홈</span></div>
-      <div class="nav-item">🛍️<span>장보기·쇼핑</span></div>
-      <div class="nav-item">♡<span>찜</span></div>
-      <div class="nav-item">☰<span>주문내역</span></div>
-      <div class="nav-item active">👤<span>마이배민</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== PHONE 2: 개선안 — 개인화 절감 카드 ===== -->
-<div class="phone-wrapper">
-  <div class="phone-label">✅ 개선안 — 개인화 절감 카드</div>
-  <div class="phone">
-    <div class="phone-status">
-      <span class="status-time">9:41</span>
-      <span class="status-icons">●●● 🔋</span>
-    </div>
-    <div class="screen">
-      <div class="my-header">
-        <h1>마이배민</h1>
-        <div class="header-icons">
-          <span style="font-size:20px">🎧</span>
-          <span style="font-size:20px">⚙️</span>
-        </div>
-      </div>
-
-      <div class="survey-bar">
-        <span>❓ 장보기·쇼핑 이용 경험, 어떠셨나요?</span>
-        <span>›</span>
-      </div>
-
-      <div class="profile-section">
-        <div class="profile-avatar">🐶</div>
-        <div class="profile-name">
-          KKook
-          <button class="edit-btn">꾸미기</button>
-        </div>
-      </div>
-
-      <!-- ★ 개선안: 토글 형식 배민클럽 혜택 카드 -->
-      <div class="club-fixed-card">
-
-        <!-- 토글 헤더 -->
-        <div class="toggle-header" onclick="toggleCard()" id="toggleHeader">
+      <!-- ★ 토글 카드 — 열린 상태 -->
+      <div class="toggle-card">
+        <div class="toggle-header" onclick="doToggle('body-open','arrow-open','hint-open')">
           <div class="toggle-title">
-            <span class="toggle-star">⭐</span>
+            <span>⭐</span>
             <span>배민클럽 가입시 혜택</span>
           </div>
-          <div class="toggle-arrow" id="toggleArrow">▲</div>
+          <div class="toggle-arrow up" id="arrow-open">▲</div>
         </div>
 
-        <!-- 토글 바디 -->
-        <div class="club-cta-card" id="toggleBody">
-          <div class="club-savings-headline">
-            이번 달 배달비로<br/>
-            <span class="highlight">7,500원</span> 내셨어요<br/>
-            배민클럽이었다면 <span class="highlight">1,990원</span>이었을 거예요
-          </div>
+        <div class="toggle-body open" id="body-open">
+          <div class="toggle-inner">
+            <div class="benefit-card">
 
-          <!-- 시각화 -->
-          <div class="savings-visual">
-            <div class="savings-col">
-              <span class="savings-col-label">지금까지 낸 배달비</span>
-              <span class="savings-col-amount red">7,500원</span>
+              <div class="benefit-badge">⭐ 배민클럽</div>
+
+              <div class="benefit-headline">
+                이번 달 배달비로<br>
+                <span class="blue">7,500원</span> 내셨어요<br>
+                배민클럽이었다면 <span class="blue">1,990원</span>이었을 거예요
+              </div>
+
+              <div class="saving-box">
+                <div class="saving-col">
+                  <span class="saving-label">지금까지 낸 배달비</span>
+                  <span class="saving-amount red">7,500원</span>
+                </div>
+                <span class="saving-arrow">→</span>
+                <div class="saving-col">
+                  <span class="saving-label">배민클럽이었다면</span>
+                  <span class="saving-amount blue">1,990원</span>
+                </div>
+              </div>
+
+              <div class="saving-result">🎉 5,510원 아낄 수 있었어요</div>
+
+              <div class="btn-group">
+                <button class="btn-join">배민클럽 가입하기</button>
+                <button class="btn-later">나중에 볼게요</button>
+              </div>
+
+              <div class="reminder-note">
+                <span>나중에 볼게요 선택 시 마이배민에서 언제든 다시 확인 가능해요</span>
+              </div>
+
             </div>
-            <div class="savings-divider">
-              <span class="savings-arrow">→</span>
-            </div>
-            <div class="savings-col">
-              <span class="savings-col-label">배민클럽이었다면</span>
-              <span class="savings-col-amount blue">1,990원</span>
-            </div>
           </div>
+        </div>
 
-          <div class="savings-saved">
-            🎉 5,510원 아낄 수 있었어요
-          </div>
-
-          <div class="club-cta-buttons">
-            <button class="btn-join-now">첫 달 무료로 시작하기</button>
-            <button class="btn-later">나중에 볼게요</button>
-          </div>
-
-          <div class="club-reminder-hint">
-            <div class="reminder-dot"></div>
-            <span class="reminder-text">나중에 볼게요 선택 시 마이배민에서 언제든 다시 확인 가능해요</span>
-          </div>
+        <div class="collapsed-hint" id="hint-open" style="display:none">
+          ⭐ 5,510원 아낄 수 있어요 · 탭해서 자세히 보기
         </div>
       </div>
 
+      <!-- 쿠폰함 등 -->
       <div class="info-card">
         <div class="info-row">
           <span>쿠폰함</span>
-          <div class="info-row-right">4개 <span>›</span></div>
+          <span class="info-right">4개 ›</span>
         </div>
-        <div class="coupon-scroll">
-          <div class="coupon-chip pink">6,000원 오픈런 전 상품 6천원 쿠폰</div>
-          <div class="coupon-chip club">🐾 13,000원 배민클럽 열정...</div>
+        <div class="coupon-row">
+          <div class="chip chip-red">6,000원 오픈런 전 상품 6천원 쿠폰</div>
+          <div class="chip chip-blue">🐾 13,000원 배민클럽 열정쿠폰</div>
         </div>
         <div class="info-row">
           <span>포인트</span>
-          <div class="info-row-right">0원 <span>›</span></div>
+          <span class="info-right">0원 ›</span>
         </div>
-        <div class="info-row">
+        <div class="info-row" style="border:none">
           <span>선물함</span>
-          <div class="info-row-right">0원 <span>›</span></div>
-        </div>
-        <div class="info-row" style="border-bottom:none">
-          <div>
-            <div>배민페이</div>
-            <div style="font-size:12px;color:#999;margin-top:2px">머니로 결제하면 배민포인트 적립</div>
-          </div>
-          <div class="info-row-right">결제수단 관리 <span>›</span></div>
+          <span class="info-right">0원 ›</span>
         </div>
       </div>
 
       <div style="height:80px"></div>
     </div>
 
-    <div class="bottom-nav">
-      <div class="nav-item">🏠<span>홈</span></div>
-      <div class="nav-item">🛍️<span>장보기·쇼핑</span></div>
-      <div class="nav-item">♡<span>찜</span></div>
-      <div class="nav-item">☰<span>주문내역</span></div>
-      <div class="nav-item active">👤<span>마이배민</span></div>
+    <div class="tab-bar">
+      <div class="tab"><span class="icon">🏠</span>홈</div>
+      <div class="tab"><span class="icon">🛍️</span>장보기·쇼핑</div>
+      <div class="tab"><span class="icon">♡</span>찜</div>
+      <div class="tab"><span class="icon">☰</span>주문내역</div>
+      <div class="tab active"><span class="icon">👤</span>마이배민</div>
     </div>
   </div>
 </div>
 
-<!-- ===== PHONE 3: "나중에 볼게요" 클릭 후 상태 ===== -->
-<div class="phone-wrapper">
-  <div class="phone-label">🕐 "나중에 볼게요" 클릭 후</div>
+
+<!-- ══════════════════════════════
+     PHONE 2 — 토글 닫힌 상태
+══════════════════════════════ -->
+<div class="phone-wrap">
+  <div class="phone-tag">🔽 토글 닫힌 상태</div>
   <div class="phone">
-    <div class="phone-status">
-      <span class="status-time">9:41</span>
-      <span class="status-icons">●●● 🔋</span>
+    <div class="status-bar">
+      <span class="time">9:41</span>
+      <span class="icons">▲▲▲ 🔋</span>
     </div>
+
     <div class="screen">
-      <div class="my-header">
+      <div class="top-bar">
         <h1>마이배민</h1>
-        <div class="header-icons">
-          <span style="font-size:20px">🎧</span>
-          <span style="font-size:20px">⚙️</span>
-        </div>
+        <div class="icons">🎧 ⚙️</div>
       </div>
 
-      <div class="survey-bar">
+      <div class="survey">
         <span>❓ 장보기·쇼핑 이용 경험, 어떠셨나요?</span>
         <span>›</span>
       </div>
 
-      <div class="profile-section">
-        <div class="profile-avatar">🐶</div>
+      <div class="profile">
+        <div class="avatar">🐶</div>
         <div class="profile-name">
           KKook
-          <button class="edit-btn">꾸미기</button>
+          <button class="btn-edit">꾸미기</button>
         </div>
       </div>
 
-      <!-- ★ 나중에 볼게요 후: 리마인드 배너로 축소 -->
-      <div class="club-fixed-card">
-        <div class="section-label">💡 KKook님을 위한 혜택</div>
-        <div class="reminder-banner">
-          <div class="reminder-banner-icon">⭐</div>
-          <div class="reminder-banner-text">
-            <div class="reminder-banner-title">배민클럽 혜택 확인하기</div>
-            <div class="reminder-banner-sub">이번 달 5,510원 아낄 수 있어요</div>
+      <!-- ★ 토글 카드 — 닫힌 상태 -->
+      <div class="toggle-card">
+        <div class="toggle-header" onclick="doToggle('body-closed','arrow-closed','hint-closed')">
+          <div class="toggle-title">
+            <span>⭐</span>
+            <span>배민클럽 가입시 혜택</span>
           </div>
-          <button class="reminder-banner-btn">보러가기</button>
+          <div class="toggle-arrow down" id="arrow-closed">▲</div>
         </div>
 
-        <div class="annotation">
-          <div class="annotation-dot"></div>
-          카드를 닫아도 마이배민 상단에 축소 배너로 유지 → 언제든 재진입 가능
+        <div class="toggle-body closed" id="body-closed">
+          <div class="toggle-inner">
+            <div class="benefit-card">
+
+              <div class="benefit-badge">⭐ 배민클럽</div>
+
+              <div class="benefit-headline">
+                이번 달 배달비로<br>
+                <span class="blue">7,500원</span> 내셨어요<br>
+                배민클럽이었다면 <span class="blue">1,990원</span>이었을 거예요
+              </div>
+
+              <div class="saving-box">
+                <div class="saving-col">
+                  <span class="saving-label">지금까지 낸 배달비</span>
+                  <span class="saving-amount red">7,500원</span>
+                </div>
+                <span class="saving-arrow">→</span>
+                <div class="saving-col">
+                  <span class="saving-label">배민클럽이었다면</span>
+                  <span class="saving-amount blue">1,990원</span>
+                </div>
+              </div>
+
+              <div class="saving-result">🎉 5,510원 아낄 수 있었어요</div>
+
+              <div class="btn-group">
+                <button class="btn-join">배민클럽 가입하기</button>
+                <button class="btn-later">나중에 볼게요</button>
+              </div>
+
+              <div class="reminder-note">
+                <span>나중에 볼게요 선택 시 마이배민에서 언제든 다시 확인 가능해요</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- 닫힌 상태 요약 한 줄 -->
+        <div class="collapsed-hint" id="hint-closed">
+          ⭐ 5,510원 아낄 수 있어요 · 탭해서 자세히 보기
         </div>
       </div>
 
-      <!-- 이하 동일 -->
       <div class="info-card">
         <div class="info-row">
           <span>쿠폰함</span>
-          <div class="info-row-right">4개 <span>›</span></div>
+          <span class="info-right">4개 ›</span>
         </div>
-        <div class="coupon-scroll">
-          <div class="coupon-chip pink">6,000원 오픈런 전 상품 6천원 쿠폰</div>
-          <div class="coupon-chip club">🐾 13,000원 배민클럽 열정...</div>
+        <div class="coupon-row">
+          <div class="chip chip-red">6,000원 오픈런 전 상품 6천원 쿠폰</div>
+          <div class="chip chip-blue">🐾 13,000원 배민클럽 열정쿠폰</div>
         </div>
         <div class="info-row">
           <span>포인트</span>
-          <div class="info-row-right">0원 <span>›</span></div>
+          <span class="info-right">0원 ›</span>
         </div>
-        <div class="info-row">
+        <div class="info-row" style="border:none">
           <span>선물함</span>
-          <div class="info-row-right">0원 <span>›</span></div>
-        </div>
-        <div class="info-row" style="border-bottom:none">
-          <div>
-            <div>배민페이</div>
-            <div style="font-size:12px;color:#999;margin-top:2px">머니로 결제하면 배민포인트 적립</div>
-          </div>
-          <div class="info-row-right">결제수단 관리 <span>›</span></div>
+          <span class="info-right">0원 ›</span>
         </div>
       </div>
 
       <div style="height:80px"></div>
     </div>
 
-    <div class="bottom-nav">
-      <div class="nav-item">🏠<span>홈</span></div>
-      <div class="nav-item">🛍️<span>장보기·쇼핑</span></div>
-      <div class="nav-item">♡<span>찜</span></div>
-      <div class="nav-item">☰<span>주문내역</span></div>
-      <div class="nav-item active">👤<span>마이배민</span></div>
+    <div class="tab-bar">
+      <div class="tab"><span class="icon">🏠</span>홈</div>
+      <div class="tab"><span class="icon">🛍️</span>장보기·쇼핑</div>
+      <div class="tab"><span class="icon">♡</span>찜</div>
+      <div class="tab"><span class="icon">☰</span>주문내역</div>
+      <div class="tab active"><span class="icon">👤</span>마이배민</div>
     </div>
   </div>
 </div>
 
+<script>
+function doToggle(bodyId, arrowId, hintId) {
+  const body  = document.getElementById(bodyId);
+  const arrow = document.getElementById(arrowId);
+  const hint  = document.getElementById(hintId);
+  const isOpen = body.classList.contains('open');
+
+  if (isOpen) {
+    body.classList.replace('open', 'closed');
+    arrow.classList.replace('up', 'down');
+    hint.style.display = 'block';
+  } else {
+    body.classList.replace('closed', 'open');
+    arrow.classList.replace('down', 'up');
+    hint.style.display = 'none';
+  }
+}
+</script>
 </body>
 </html>
